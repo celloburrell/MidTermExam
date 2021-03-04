@@ -17,13 +17,24 @@ namespace MidTermExam
 			if (!IsPostBack)
 			{
 				SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["QAConnectionString"].ConnectionString);
-				string query = "select BugID, Subject from Bugs";
+				string query = "select BugID, Subject from Bugs where Status ='Open'";
 				SqlCommand cmd = new SqlCommand(query, conn);
 				SqlDataAdapter da = new SqlDataAdapter(cmd);
 				DataTable dt = new DataTable();
 				da.Fill(dt);
 				foreach (DataRow dr in dt.Rows) {
 					ddlBugs.Items.Add(new ListItem(dr["Subject"].ToString(), dr["BugID"].ToString()));
+				}
+				if (ddlBugs.Items.Count == 1)
+				{
+					query = "select * from Bugs where BugID=@b";
+					cmd = new SqlCommand(query, conn);
+					cmd.Parameters.AddWithValue("@b", ddlBugs.SelectedValue);
+					da = new SqlDataAdapter(cmd);
+					dt = new DataTable();
+					da.Fill(dt);
+					gvOutput.DataSource = dt;
+					gvOutput.DataBind();
 				}
 				query = "select UserID, Name from Users where Type='Developer'";
 				cmd = new SqlCommand(query, conn);
