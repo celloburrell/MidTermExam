@@ -51,7 +51,7 @@ namespace MidTermExam
 		protected void btnAssign_Click(object sender, EventArgs e)
 		{
 			SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["QAConnectionString"].ConnectionString);
-			string query = "update Bugs set Status = 'In Progress', AssignedTo = @a where BugID = @b";
+			string query = "update Bugs set Status = 'Assigned', AssignedTo = @a where BugID = @b";
 			SqlCommand cmd = new SqlCommand(query, conn);
 			cmd.Parameters.AddWithValue("@a", ddlDeveloper.SelectedValue);
 			cmd.Parameters.AddWithValue("@b", ddlBugs.SelectedValue);

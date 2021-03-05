@@ -18,7 +18,7 @@ namespace MidTermExam
 			if (!IsPostBack)
 			{
 				SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["QAConnectionString"].ConnectionString);
-				string query = "select BugID, Subject from Bugs where AssignedTo=@a AND Status='In Progress'";
+				string query = "select BugID, Subject from Bugs where AssignedTo=@a AND Status='Assigned'";
 				SqlCommand cmd = new SqlCommand(query, conn);
 				cmd.Parameters.AddWithValue("@a", Session["UserId"]);
 				SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -60,7 +60,7 @@ namespace MidTermExam
 			if (!tbxChanges.Text.Equals(null))
 			{
 				SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["QAConnectionString"].ConnectionString);
-				string query = "update Bugs set Status = 'Complete', Changes = @c where BugID = @b";
+				string query = "update Bugs set Status = 'Completed', Changes = @c where BugID = @b";
 				SqlCommand cmd = new SqlCommand(query, conn);
 				cmd.Parameters.AddWithValue("@c", tbxChanges.Text);
 				cmd.Parameters.AddWithValue("@b", ddlBugs.SelectedValue);
