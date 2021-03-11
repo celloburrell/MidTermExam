@@ -19,7 +19,7 @@
 			<br />
 			<asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
         &nbsp;&nbsp;&nbsp;
-			<asp:TextBox ID="tbxPassword" runat="server"></asp:TextBox>
+			<asp:TextBox ID="tbxPassword" runat="server" TextMode="Password"></asp:TextBox>
         	<br />
 			<br />
 			<asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />

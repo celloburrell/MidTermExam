@@ -71,6 +71,7 @@
     <Content Include="App_Data\QA.mdf" />
     <Content Include="App_Data\QA_log.ldf">
       <DependentUpon>QA.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DeveloperPage.aspx" />
     <Content Include="LoginPage.aspx" />

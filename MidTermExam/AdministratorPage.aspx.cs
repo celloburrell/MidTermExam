@@ -44,12 +44,12 @@ namespace MidTermExam
 					login = false;
 				}
 				if (Int32.Parse(rdr["UserID"].ToString()) > userIDNumber) {
-					userIDNumber = Int32.Parse(rdr["UserID"].ToString()) + 1;
+					userIDNumber = Int32.Parse(rdr["UserID"].ToString());
 				}
 			}
-			
 			rdr.Close();
 			conn.Close();
+			userIDNumber++;
 			if (tbxPassword.Text.Count() < 8) {
 				passwordLength = false;
 				Response.Write("Password must be at least 8 character long." + "<br/><br/>");
